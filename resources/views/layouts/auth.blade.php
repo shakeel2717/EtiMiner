@@ -55,6 +55,7 @@
     <script src="{{ asset('assets/js/charts/dashboardf700.js?v=1.0.1') }}" defer></script>
     <script src="{{ asset('assets/js/qompac-uif700.js?v=1.0.1') }}" defer></script>
     <script src="{{ asset('assets/js/sidebarf700.js?v=1.0.1') }}" defer></script>
+    <x-alert />
 </body>
 
 </html>

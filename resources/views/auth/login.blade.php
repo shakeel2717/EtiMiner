@@ -6,6 +6,7 @@
             <div class="card-body">
                 <h2 class="mb-2 text-center">Sign In</h2>
                 <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-12">
                             <x-input type="email" name="email" placeholder="Email" />
@@ -18,11 +19,11 @@
                                 <input type="checkbox" class="form-check-input" id="customCheck1">
                                 <label class="form-check-label" for="customCheck1">Remember Me</label>
                             </div>
-                            <a href="recoverpw.html">Forgot Password?</a>
+                            <a href="{{ route('password.request') }}">Forgot Password?</a>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Create Account</button>
+                        <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
                     <p class="mt-3 text-center">
                         Don't have an account? <a href="{{ route('register') }}" class="text-underline">Click here to sign up.</a>

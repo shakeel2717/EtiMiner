@@ -22,10 +22,10 @@
                         </div>
                         <div class="col-lg-12 d-flex justify-content-between mt-4">
                             <div class="form-check mb-3">
-                                <input type="checkbox" class="form-check-input" id="customCheck1" require>
+                                <input type="checkbox" class="form-check-input" id="customCheck1" required>
                                 <label class="form-check-label" for="customCheck1">I Agree to the Terms and Conditions</label>
                             </div>
-                            <a href="recoverpw.html">Forgot Password?</a>
+                            <a href="{{ route('password.request') }}">Forgot Password?</a>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
