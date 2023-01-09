@@ -1,4 +1,6 @@
-@if($type != "hidden")
-<label class="mt-4" for="{{ $name }}">{{ $placeholder }}</label>
-@endif
-<input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" class="form-control" placeholder="{{ $placeholder }}" value="{{ old($name, $value) }}" {{ $attribute }}>
+<div class="form-group">
+    @if($type != "hidden")
+    <label for="{{ $name }}" class="form-label">{{ $placeholder }}</label>
+    @endif
+    <input type="{{ $type }}" class="form-control" id="{{ $name }}" name="{{ $name }}" aria-describedby="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ old($name, $value) }}" {{ $attribute }}>
+</div>

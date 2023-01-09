@@ -1,5 +1,4 @@
-(function () {
-  "use strict";
+"use strict";
 
 const group1 = document.getElementById("group1");
 const group2 = document.getElementById("group2");
@@ -21,6 +20,7 @@ const sortable1 = Sortable.create(group1, {
     group2.classList.add("adding");
   },
   onSort: function(evt) {
+    console.log("group1 on sort");
     evt.from.classList.remove("adding");
   },
   onEnd: function(evt) {
@@ -95,5 +95,3 @@ const sortable4 = Sortable.create(group4, {
 if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector;
 }
-
-})(jQuery);
