@@ -1,52 +1,42 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@extends('layouts.auth')
+@section('form')
+<div class="row justify-content-center pt-5">
+    <div class="col-md-9">
+        <div class="card  d-flex justify-content-center mb-0 auth-card iq-auth-form">
+            <div class="card-body">
+                <h2 class="mb-2 text-center">Create new Account</h2>
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <x-input name="username" placeholder="Username" />
+                        </div>
+                        <div class="col-lg-12">
+                            <x-input type="email" name="email" placeholder="Email" />
+                        </div>
+                        <div class="col-lg-12">
+                            <x-input type="password" name="password" placeholder="Password" />
+                        </div>
+                        <div class="col-lg-12">
+                            <x-input type="password" name="password_confirmation" placeholder="Confirm Password" />
+                        </div>
+                        <div class="col-lg-12 d-flex justify-content-between mt-4">
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="customCheck1" require>
+                                <label class="form-check-label" for="customCheck1">I Agree to the Terms and Conditions</label>
+                            </div>
+                            <a href="recoverpw.html">Forgot Password?</a>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Create Account</button>
+                    </div>
+                    <p class="mt-3 text-center">
+                        Already have an account? <a href="{{ route('login') }}" class="text-underline">Click here to sign in.</a>
+                    </p>
+                </form>
+            </div>
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</div>
+@endsection

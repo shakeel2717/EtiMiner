@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title data-setting="app_name" data-rightJoin=" Responsive Bootstrap 5 Admin Dashboard Template">Qompac UI Responsive Bootstrap 5 Admin Dashboard Template</title>
-    <meta name="description" content="Qompac UI is a revolutionary Bootstrap Admin Dashboard Template and UI Components Library. The Admin Dashboard Template and UI Component features 8 modules.">
-    <meta name="keywords" content="premium, admin, dashboard, template, bootstrap 5, clean ui, qompac-ui, admin dashboard,responsive dashboard, optimized dashboard, simple auth">
-    <meta name="author" content="Iqonic Design">
-    <meta name="DC.title" content="Qompac UI Simple | Responsive Bootstrap 5 Admin Dashboard Template">
+    <title>{{ env('APP_NAME') }} | {{ env('APP_DESC') }}</title>
+    <meta name="description" content="{{ env('APP_DESC') }}">
+    <meta name="keywords" content="{{ env('APP_DESC') }}">
+    <meta name="author" content="ASAN Webs Development">
+    <meta name="DC.title" content="{{ env('APP_DESC') }}">
     <link rel="shortcut icon" href="https://templates.iqonic.design/product/qompac-ui/html/dist/assets/images/favicon.ico">
     <link rel="stylesheet" href="{{ asset('assets/css/core/libs.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/qompac-ui.minf700.css?v=1.0.1') }}">
