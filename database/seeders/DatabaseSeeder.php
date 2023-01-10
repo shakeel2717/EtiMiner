@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'shakeel2717',
-            'username' => 'shakeel2717',
-            'email' => 'shakeel2717@gmail.com',
-            'password' => Hash::make('asdfasdf'),
-            'email_verified_at' => now(),
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'name' => 'shakeel2717',
+        //     'username' => 'shakeel2717',
+        //     'email' => 'shakeel2717@gmail.com',
+        //     'password' => Hash::make('asdfasdf'),
+        //     'email_verified_at' => now(),
+        // ]);
 
         \App\Models\Coin::factory()->create([
             'name' => 'Bitcoin',
@@ -48,6 +48,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dogecoin',
             'symbol' => 'DOGE',
             'img' => 'doge.svg',
+        ]);
+
+
+        \App\Models\Setting::factory()->create([
+            'key' => 'free_bonus',
+            'value' => 120,
         ]);
     }
 }

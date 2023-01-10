@@ -27,4 +27,45 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">PORTFOLIO DIVERSIFICATION</h5>
+                <div class="row">
+                    @foreach ($coins as $coin)
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
+                                    <div class="data">
+                                        <h4 class="ms-2">{{ $coin->name }} ({{ $coin->symbol }})</h4>
+                                        <p class="ms-2 text-success">{{ number_format(0,12) }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label for="{{ $coin->symbol }}Range" class="form-label">Example range</label>
+                                        <input type="range" class="form-control" min="0" max="100" id="{{ $coin->symbol }}Range" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('footer')
+<script>
+    $(document).ready(function() {
+        $("#BTCRange").change(function() {
+            alert($("#BTCRange").val());
+        });
+    });
+</script>
 @endsection

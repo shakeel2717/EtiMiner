@@ -213,6 +213,7 @@
     <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
     <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
     <x-alert />
+    @yield('footer')
 </body>
 
 </html>
