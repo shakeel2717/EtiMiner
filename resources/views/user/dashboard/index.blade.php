@@ -10,7 +10,7 @@
         <div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
             <div class="text-center card-body d-flex justify-content-around">
                 <div>
-                    <h2 class="mb-2">121<small>GH/s</small></h2>
+                    <h2 class="mb-2">{{ power(auth()->user()->id) }}<small>GH/s</small></h2>
                     <p class="mb-0 text-secondary">My Power</p>
                 </div>
                 <hr class="hr-vertial">
@@ -46,7 +46,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-3">
-                                        <label for="{{ $coin->symbol }}Range" class="form-label">Example range</label>
                                         <input type="range" class="form-control" min="0" max="100" id="{{ $coin->symbol }}Range" value="1">
                                     </div>
                                 </div>

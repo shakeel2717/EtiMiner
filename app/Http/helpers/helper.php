@@ -6,7 +6,7 @@ use App\Models\Setting;
 function power($user_id)
 {
     $in = Power::where('user_id', $user_id)->where('sum', true)->sum('amount');
-    $out = Power::where('user_id', $user_id)->where('sum', true)->sum('amount');
+    $out = Power::where('user_id', $user_id)->where('sum', false)->sum('amount');
     return $in - $out;
 }
 
