@@ -6,7 +6,7 @@
     @csrf
     <div class="row">
         <div class="col-lg-12">
-            <x-input name="email" placeholder="Enter Email" />
+            <x-input type="email" name="email" placeholder="Enter Email" />
         </div>
         <div class="col-lg-12">
             <x-input type="password" name="password" placeholder="Enter Password" />

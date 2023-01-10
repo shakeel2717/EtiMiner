@@ -2,6 +2,11 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
+        <x-notice />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
             <div class="text-center card-body d-flex justify-content-around">
                 <div>
