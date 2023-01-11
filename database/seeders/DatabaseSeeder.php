@@ -46,6 +46,23 @@ class DatabaseSeeder extends Seeder
         $power->sum = true;
         $power->save();
 
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'test',
+            'username' => 'test',
+            'email' => 'test@gmail.com',
+            'password' => Hash::make('asdfasdf'),
+            'email_verified_at' => now(),
+        ]);
+
+        $power = new Power();
+        $power->user_id = $user->id;
+        $power->status = true;
+        $power->amount = setting("free_bonus");
+        $power->type = "Registration";
+        $power->sum = true;
+        $power->save();
+
         \App\Models\Coin::factory()->create([
             'name' => 'Bitcoin',
             'symbol' => 'BTC',
