@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Setting::factory()->create([
             'key' => 'free_bonus',
-            'value' => 120,
+            'value' => 100,
         ]);
 
 

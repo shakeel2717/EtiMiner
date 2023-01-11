@@ -18,7 +18,7 @@ function powerInUsed($user_id)
 }
 
 
-function powerInUsedByCoin($user_id,$coin_id)
+function powerInUsedByCoin($user_id, $coin_id)
 {
     $in = Investment::where('user_id', $user_id)->where('coin_id', $coin_id)->where('status', true)->sum('amount');
     return $in;
@@ -30,4 +30,14 @@ function setting($key)
 {
     $setting = Setting::where('key', $key)->first();
     return $setting->value;
+}
+
+
+function getPercentage($user_id, $coin_id)
+{
+    info($coin_id);
+    $usedByThisCoin = powerInUsedByCoin($user_id, $coin_id);
+    $totalPower = $usedByThisCoin + power($user_id);
+    return $totalPower * $usedByThisCoin / 100;
+    
 }
