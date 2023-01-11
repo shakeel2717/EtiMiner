@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coin;
 use App\Models\Investment;
 use App\Models\Power;
 use Illuminate\Http\Request;
@@ -47,6 +48,12 @@ class InvestController extends Controller
         if (power(auth()->user()->id) < $amount) {
             return redirect()->back()->withErrors('Insufficient Power');
         }
+
+        if (power(auth()->user()->id) < 0.01) {
+            return redirect()->back()->withErrors('Power not Available to Mine This Coin!');
+        }
+
+
         // out this power
         $power = new Power();
         $power->user_id = auth()->user()->id;
@@ -108,6 +115,28 @@ class InvestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coin = Coin::find($id);
+        // checking if power in use in this coin
+        if (powerInUsedByCoin(auth()->user()->id, $id) < 0.01) {
+            return redirect()->back()->withErrors('No Power used in Mining for ' . $coin->name);
+        }
+
+        // stop this Mining
+        // out this power
+        $power = new Power();
+        $power->user_id = auth()->user()->id;
+        $power->status = true;
+        $power->amount = powerInUsedByCoin(auth()->user()->id, $id);
+        $power->type = "Power Recovered";
+        $power->sum = true;
+        $power->save();
+
+        // deleting this investment
+        $invests = Investment::where('user_id', auth()->user()->id)->where('coin_id', $coin->id)->get();
+        foreach ($invests as $invest) {
+            $invest->delete();
+        }
+
+        return redirect()->back()->with('success', 'Power Recovered Successfully from: ' . $coin->name);
     }
 }

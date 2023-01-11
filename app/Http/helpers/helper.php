@@ -18,6 +18,13 @@ function powerInUsed($user_id)
 }
 
 
+function powerInUsedByCoin($user_id,$coin_id)
+{
+    $in = Investment::where('user_id', $user_id)->where('coin_id', $coin_id)->where('status', true)->sum('amount');
+    return $in;
+}
+
+
 
 function setting($key)
 {
