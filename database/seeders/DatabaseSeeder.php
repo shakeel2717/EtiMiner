@@ -118,7 +118,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Plan::factory()->create([
-            'name' => 'Ultimate',
+            'name' => 'Investor',
             'percentage' => 5,
             'duration' => 180,
             'min_invest' => 2000,

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\user\DepositController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\InvestController;
@@ -14,6 +15,7 @@ Route::prefix('user/')->middleware('auth', 'user', 'verified')->name('user.')->g
     Route::get('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::resource('profile', ProfileController::class);
     Route::resource('invest', InvestController::class);
+    Route::resource('deposit', DepositController::class);
 });
 
 require __DIR__ . '/auth.php';
