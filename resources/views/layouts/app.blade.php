@@ -180,7 +180,7 @@
             <div class="my-4 p-2">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>HI {{ auth()->user()->username }}</h2>
+                        <h4>HI {{ auth()->user()->username }}</h4>
                         <p>Time on the server {{ now() }}</p>
                     </div>
                 </div>

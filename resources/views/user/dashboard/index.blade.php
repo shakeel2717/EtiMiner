@@ -13,7 +13,7 @@
 
     input[type=range]::-webkit-slider-runnable-track {
         width: 100%;
-        height: 12.8px;
+        height: 5.8px;
         cursor: pointer;
         box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
         background: #EA6A12;
@@ -24,7 +24,7 @@
     input[type=range]::-webkit-slider-thumb {
         box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
         border: 0px solid #000000;
-        height: 20px;
+        height: 15px;
         width: 39px;
         border-radius: 7px;
         background: #ffff;
@@ -120,7 +120,7 @@
                                 <path d="M11.455 2.22103L8.54604 5.06682C8.24604 5.36094 8.24604 5.83427 8.54804 6.12742C8.85004 6.41959 9.33704 6.41862 9.63704 6.12547L11.23 4.56623V6.06119V14.4515C11.23 14.8654 11.575 15.2014 12 15.2014C12.426 15.2014 12.77 14.8654 12.77 14.4515V4.56623L14.363 6.12547C14.663 6.41862 15.15 6.41959 15.452 6.12742C15.603 5.98036 15.679 5.78849 15.679 5.59566C15.679 5.40477 15.603 5.21291 15.454 5.06682L12.546 2.22103C12.401 2.07981 12.205 1.99995 12 1.99995C11.796 1.99995 11.6 2.07981 11.455 2.22103Z" fill="currentColor"></path>
                             </svg>
                         </div>
-                        <h2 class="mb-2"><span id="power">{{ power(auth()->user()->id) }}</span><small>GH/s</small></h2>
+                        <h5 class="mb-2"><span id="power">{{ power(auth()->user()->id) }}</span><small>GH/s</small></h5>
                         <p class="mb-0 text-secondary">My Power</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                                 <path d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z" fill="currentColor"></path>
                             </svg>
                         </div>
-                        <h2 class="mb-2">1 GH/s</small></h2>
+                        <h5 class="mb-2">1 GH/s</small></h2>
                         <p class="mb-0 text-secondary">Free Power</p>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                                 <path d="M10.8134 15.248C10.5894 15.248 10.3654 15.163 10.1944 14.992L7.82144 12.619C7.47944 12.277 7.47944 11.723 7.82144 11.382C8.16344 11.04 8.71644 11.039 9.05844 11.381L10.8134 13.136L14.9414 9.00796C15.2834 8.66596 15.8364 8.66596 16.1784 9.00796C16.5204 9.34996 16.5204 9.90396 16.1784 10.246L11.4324 14.992C11.2614 15.163 11.0374 15.248 10.8134 15.248Z" fill="currentColor"></path>
                             </svg>
                         </div>
-                        <h2 class="mb-2">{{ number_format(powerInUsed(auth()->user()->id,2)) }} <small>GH/s</small></h2>
+                        <h5 class="mb-2">{{ number_format(powerInUsed(auth()->user()->id,2)) }} <small>GH/s</small></h5>
                         <p class="mb-0 text-secondary">Power In Use</p>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">PORTFOLIO DIVERSIFICATION (<span id="powerInUsed">{{ powerInUsed(auth()->user()->id) }}</span>GH/s Reserved) </h5>
+                <h6 class="card-title">PORTFOLIO DIVERSIFICATION (<span id="powerInUsed">{{ powerInUsed(auth()->user()->id) }}</span>GH/s Reserved) </h6>
                 <div class="row">
                     @foreach ($coins as $coin)
                     <div class="col-md-6">
@@ -175,8 +175,8 @@
                                 <div class="d-flex align-items-center">
                                     <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
                                     <div class="data">
-                                        <h4 class="ms-2">{{ $coin->name }} ({{ $coin->symbol }})</h4>
-                                        <h6 class="ms-2 text-warning">Power In Use: {{ number_format(powerInUsedByCoin(auth()->user()->id,$coin->id),2) }} GH/s</h6>
+                                        <h6 class="ms-2">{{ $coin->name }} ({{ $coin->symbol }})</h6>
+                                        <p class="ms-2 mb-0">Power In Use: {{ number_format(powerInUsedByCoin(auth()->user()->id,$coin->id),2) }} GH/s</p>
                                         <p class="ms-2 text-success">{{ number_format(0,12) }}</p>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                             <input type="range" name="range" class="form-range" min="0" max="100" id="{{$coin->symbol}}Range" value="{{ getPercentage(auth()->user()->id,$coin->id) }}">
                                         </div>
                                         <div class="mb-3">
-                                            <button type="submit" class="btn btn-sm btn-primary">Invest</button>
+                                            <button type="submit" class="btn btn-sm btn-primary">Save</button>
                                             <a onclick="document.getElementById('DestroyInvest{{ $coin->id }}').submit();" class="btn btn-sm btn-warning">Stop Mining</a>
                                         </div>
                                     </div>

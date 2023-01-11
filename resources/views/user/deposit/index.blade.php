@@ -17,11 +17,11 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="">
                                     <input type="radio" name="coin" id="{{ $coin->symbol }}" class="form-check-input" value="{{ $coin->symbol }}">
-                                    <label class="ms-2 h5 form-check-label" for="{{ $coin->symbol }}">
+                                    <label class="ms-2 h6 form-check-label" for="{{ $coin->symbol }}">
                                         {{ $coin->name }}
                                     </label>
                                 </div>
-                                <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
+                                <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="30">
                             </div>
                         </div>
                     </div>
