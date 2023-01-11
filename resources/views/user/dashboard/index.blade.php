@@ -41,6 +41,7 @@
                                     <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
                                     <div class="data">
                                         <h4 class="ms-2">{{ $coin->name }} ({{ $coin->symbol }})</h4>
+                                        <h6 class="ms-2 text-warning">Power In Use: {{ number_format(powerInUsedByCoin(auth()->user()->id,$coin->id),2) }} GH/s</h6>
                                         <p class="ms-2 text-success">{{ number_format(0,12) }}</p>
                                     </div>
                                 </div>
