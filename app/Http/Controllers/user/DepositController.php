@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coin;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class DepositController extends Controller
     public function index()
     {
         $plans = Plan::all();
-        return view('user.deposit.index', compact('plans'));
+        $coins = Coin::where('status', true)->get();
+        return view('user.deposit.index', compact('plans', 'coins'));
     }
 
     /**
@@ -37,7 +39,11 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'coin' => 'required|exists:coins,symbol'
+        ]);
+
+        return "Crypto Payment Gateway";
     }
 
     /**

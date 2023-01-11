@@ -6,6 +6,35 @@
     </div>
 </div>
 <div class="row mt-4">
+    <div class="col-md-12">
+        <form action="{{ route('user.deposit.store') }}" method="POST">
+            @csrf
+            <div class="row">
+                @foreach ($coins as $coin)
+                <div class="col-md-6">
+                    <div class="card border border-primary">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="">
+                                    <input type="radio" name="coin" id="{{ $coin->symbol }}" class="form-check-input" value="{{ $coin->symbol }}">
+                                    <label class="ms-2 h5 form-check-label" for="{{ $coin->symbol }}">
+                                        {{ $coin->name }}
+                                    </label>
+                                </div>
+                                <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <div class="mt-2">
+                    <button type="submit">Make Deposit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row mt-4">
     @foreach($plans as $plan)
     <div class="col-md-4">
         <div class="card border {{ ($plan->name == 'Investor') ? 'border-primary' : '' }}">
