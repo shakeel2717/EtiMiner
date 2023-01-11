@@ -10,7 +10,7 @@
         <div class="card aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
             <div class="text-center card-body d-flex justify-content-around">
                 <div>
-                    <h2 class="mb-2">{{ power(auth()->user()->id) }}<small>GH/s</small></h2>
+                    <h2 class="mb-2"><span id="power">{{ power(auth()->user()->id) }}</span><small>GH/s</small></h2>
                     <p class="mb-0 text-secondary">My Power</p>
                 </div>
                 <hr class="hr-vertial">
@@ -62,8 +62,31 @@
 @section('footer')
 <script>
     $(document).ready(function() {
-        $("#BTCRange").change(function() {
-            alert($("#BTCRange").val());
+        $($("#BTCRange")).change(function() {
+            var range = $("#BTCRange").val();
+            var availablePower = <?php echo power(auth()->user()->id) ?>;
+            var percentage = availablePower * range / 100;
+            var amount = availablePower - percentage;
+            $("#power").html(amount);
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': "{{csrf_token()}}",
+                },
+                url: "{{route('user.invest.store')}}",
+                type: "post",
+                data: {
+                    amount: amount,
+                    percentage: percentage,
+                },
+                success: function(response) {
+
+                    alert(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
         });
     });
 </script>
