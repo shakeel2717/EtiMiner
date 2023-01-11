@@ -32,8 +32,15 @@
                         </div>
                         <hr class="hr-vertial">
                         <div>
-                            <h2 class="mb-2">$0.38 +0 <small>GH/s</small></h2>
-                            <p class="mb-0 text-secondary">In Day(s) </p>
+                            <h2 class="mb-2">${{ $dayWiseProfit }} +0 <small>GH/s</small></h2>
+                            <div class="d-flex align-items-center justify-content-center mb-0 text-secondary">
+                                <p class="m-2">In</p>
+                                <div class="input">
+                                    <input style="width:100px;" type="number" class="form-control form-control-sm text-center" name="days" wire:model="days" id="days">
+                                    @error('days')<small> <span class="text-danger">{{ $message }}</span></small> @enderror
+                                </div>
+                                <p class="m-2">Day(s)</p>
+                            </div>
                         </div>
                     </div>
                 </div>

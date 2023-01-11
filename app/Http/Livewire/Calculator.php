@@ -13,11 +13,14 @@ class Calculator extends Component
     public $total;
     public $profit;
     public $usd = 1;
+    public $days = 120;
+    public $dayWiseProfit;
 
 
     protected $rules = [
         'usd' => 'required|numeric|min:1|max:1000000',
         'crypto' => 'required|numeric|max:1000000000',
+        'days' => 'required|numeric|min:1',
     ];
 
     public function mount()
@@ -30,6 +33,7 @@ class Calculator extends Component
         // getting profit for this amount
         $plan = Plan::where('min_invest', '<=', $this->usd)->where('max_invest', '>=', $this->usd)->first();
         $this->profit = $plan->percentage;
+        $this->dayWiseProfit = $this->days * ($this->usd * 3 / 100);
     }
 
 
@@ -45,6 +49,7 @@ class Calculator extends Component
             // getting profit for this amount
             $plan = Plan::where('min_invest', '<=', $this->usd)->where('max_invest', '>=', $this->usd)->first();
             $this->profit = $plan->percentage;
+            $this->dayWiseProfit = $this->days * ($this->usd * $this->profit / 100);
         } else {
             $this->crypto = 0;
         }
@@ -62,11 +67,17 @@ class Calculator extends Component
             // getting profit for this amount
             $plan = Plan::where('min_invest', '<=', $this->usd)->where('max_invest', '>=', $this->usd)->first();
             $this->profit = $plan->percentage;
+            $this->dayWiseProfit = $this->days * ($this->usd * $this->profit / 100);
         } else {
             $this->usd = 0;
         }
     }
 
+    public function updatedDays()
+    {
+        $this->validate();
+        $this->dayWiseProfit = $this->days * ($this->usd * $this->profit / 100);
+    }
 
     public function render()
     {
