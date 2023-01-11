@@ -64,5 +64,67 @@ class DatabaseSeeder extends Seeder
             'symbol' => 'DOGE',
             'img' => 'doge.svg',
         ]);
+
+
+
+        \App\Models\Plan::factory()->create([
+            'name' => 'Free',
+            'percentage' => 2,
+            'duration' => 180,
+            'min_invest' => 0,
+            'max_invest' => 0.99,
+            'min_power' => 1,
+            'max_power' => 19,
+        ]);
+
+
+        \App\Models\Plan::factory()->create([
+            'name' => 'Standard',
+            'percentage' => 2.5,
+            'duration' => 180,
+            'min_invest' => 1,
+            'max_invest' => 23.99,
+            'min_power' => 20,
+            'max_power' => 499,
+        ]);
+
+        \App\Models\Plan::factory()->create([
+            'name' => 'Advanced',
+            'percentage' => 3,
+            'duration' => 180,
+            'min_invest' => 25,
+            'max_invest' => 249.99,
+            'min_power' => 500,
+            'max_power' => 4999,
+        ]);
+
+        \App\Models\Plan::factory()->create([
+            'name' => 'Premium',
+            'percentage' => 4,
+            'duration' => 180,
+            'min_invest' => 250,
+            'max_invest' => 749.99,
+            'min_power' => 5000,
+            'max_power' => 14999,
+        ]);
+        \App\Models\Plan::factory()->create([
+            'name' => 'Ultimate',
+            'percentage' => 4.5,
+            'duration' => 180,
+            'min_invest' => 750,
+            'max_invest' => 1999.99,
+            'min_power' => 15000,
+            'max_power' => 39999.99,
+        ]);
+
+        \App\Models\Plan::factory()->create([
+            'name' => 'Ultimate',
+            'percentage' => 5,
+            'duration' => 180,
+            'min_invest' => 2000,
+            'max_invest' => 99999.99,
+            'min_power' => 40000,
+            'max_power' => 100000,
+        ]);
     }
 }
