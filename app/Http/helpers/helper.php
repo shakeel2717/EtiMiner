@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Investment;
 use App\Models\Power;
 use App\Models\Setting;
 
@@ -8,6 +9,12 @@ function power($user_id)
     $in = Power::where('user_id', $user_id)->where('sum', true)->sum('amount');
     $out = Power::where('user_id', $user_id)->where('sum', false)->sum('amount');
     return $in - $out;
+}
+
+function powerInUsed($user_id)
+{
+    $in = Investment::where('user_id', $user_id)->where('status', true)->sum('amount');
+    return $in;
 }
 
 

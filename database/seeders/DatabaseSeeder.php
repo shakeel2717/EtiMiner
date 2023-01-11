@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Coin::factory()->create([
             'name' => 'BNB Coin (BSC Chain)',
-            'symbol' => 'BNB.BSC',
+            'symbol' => 'BNB',
             'img' => 'bnb.svg',
         ]);
 

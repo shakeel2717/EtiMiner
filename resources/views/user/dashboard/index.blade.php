@@ -31,26 +31,33 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">PORTFOLIO DIVERSIFICATION</h5>
+                <h5 class="card-title">PORTFOLIO DIVERSIFICATION (<span id="powerInUsed">{{ powerInUsed(auth()->user()->id) }}</span>GH/s) </h5>
                 <div class="row">
                     @foreach ($coins as $coin)
                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
-                                    <div class="data">
-                                        <h4 class="ms-2">{{ $coin->name }} ({{ $coin->symbol }})</h4>
-                                        <p class="ms-2 text-success">{{ number_format(0,12) }}</p>
+                        <form action="{{ route('user.invest.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="coin_id" value="{{ $coin->id }}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ asset('assets/crypto/') }}/{{ $coin->img }}" alt="{{ $coin->name }} Icon" width="50">
+                                        <div class="data">
+                                            <h4 class="ms-2">{{ $coin->name }} ({{ $coin->symbol }})</h4>
+                                            <p class="ms-2 text-success">{{ number_format(0,12) }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3">
-                                        <input type="range" class="form-control" min="0" max="100" id="{{ $coin->symbol }}Range" value="1">
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <input type="range" name="range" class="form-control" min="0" max="100" id="{{$coin->symbol}}Range" value="1">
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-sm btn-primary">Invest</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     @endforeach
                 </div>
@@ -58,36 +65,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('footer')
-<script>
-    $(document).ready(function() {
-        $($("#BTCRange")).change(function() {
-            var range = $("#BTCRange").val();
-            var availablePower = <?php echo power(auth()->user()->id) ?>;
-            var percentage = availablePower * range / 100;
-            var amount = availablePower - percentage;
-            $("#power").html(amount);
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': "{{csrf_token()}}",
-                },
-                url: "{{route('user.invest.store')}}",
-                type: "post",
-                data: {
-                    amount: amount,
-                    percentage: percentage,
-                },
-                success: function(response) {
-
-                    alert(response);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                }
-            });
-        });
-    });
-</script>
 @endsection
