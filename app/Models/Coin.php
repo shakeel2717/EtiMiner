@@ -14,6 +14,7 @@ class Coin extends Model
         'name',
         'symbol',
         'img',
+        'price',
         'status',
     ];
 }

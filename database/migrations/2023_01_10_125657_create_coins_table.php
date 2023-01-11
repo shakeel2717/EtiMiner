@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('symbol');
+            $table->double('price');
             $table->string('img');
             $table->boolean('status')->default(true);
             $table->timestamps();

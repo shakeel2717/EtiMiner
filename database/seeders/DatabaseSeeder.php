@@ -24,6 +24,12 @@ class DatabaseSeeder extends Seeder
             'value' => 120,
         ]);
 
+
+        \App\Models\Setting::factory()->create([
+            'key' => 'power_price',
+            'value' => 20,
+        ]);
+
         $user = \App\Models\User::factory()->create([
             'name' => 'shakeel2717',
             'username' => 'shakeel2717',
@@ -43,12 +49,14 @@ class DatabaseSeeder extends Seeder
         \App\Models\Coin::factory()->create([
             'name' => 'Bitcoin',
             'symbol' => 'BTC',
+            'price' => 17440.62,
             'img' => 'btc.svg',
         ]);
 
         \App\Models\Coin::factory()->create([
             'name' => 'BNB Coin (BSC Chain)',
             'symbol' => 'BNB',
+            'price' => 278.27,
             'img' => 'bnb.svg',
         ]);
 
@@ -56,15 +64,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Coin::factory()->create([
             'name' => 'TRON',
             'symbol' => 'TRX',
+            'price' => 0.05513,
             'img' => 'trx.svg',
         ]);
 
         \App\Models\Coin::factory()->create([
             'name' => 'Dogecoin',
             'symbol' => 'DOGE',
+            'price' => 0.07696,
             'img' => 'doge.svg',
         ]);
-
 
 
         \App\Models\Plan::factory()->create([
@@ -83,7 +92,7 @@ class DatabaseSeeder extends Seeder
             'percentage' => 2.5,
             'duration' => 180,
             'min_invest' => 1,
-            'max_invest' => 23.99,
+            'max_invest' => 24.99,
             'min_power' => 20,
             'max_power' => 499,
         ]);
@@ -122,9 +131,9 @@ class DatabaseSeeder extends Seeder
             'percentage' => 5,
             'duration' => 180,
             'min_invest' => 2000,
-            'max_invest' => 99999.99,
+            'max_invest' => 999999999.99,
             'min_power' => 40000,
-            'max_power' => 100000,
+            'max_power' => 100000000000,
         ]);
     }
 }

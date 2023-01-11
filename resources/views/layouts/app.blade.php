@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/dark.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css') }}" />
+    @livewireStyles
 </head>
 
 <body class="auto dark theme-color-yellow">
@@ -214,6 +215,7 @@
     <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
     <x-alert />
     @yield('footer')
+    @livewireScripts
 </body>
 
 </html>

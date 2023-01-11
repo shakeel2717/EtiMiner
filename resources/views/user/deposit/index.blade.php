@@ -27,13 +27,14 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="mt-2">
-                    <button type="submit">Make Deposit</button>
+                <div class="mt-2 text-end">
+                    <button type="submit" class="btn btn-primary btn-lg">Make Deposit</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+@livewire('calculator')
 <div class="row mt-4">
     @foreach($plans as $plan)
     <div class="col-md-4">
